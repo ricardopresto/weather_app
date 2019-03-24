@@ -1,0 +1,31 @@
+#input,
+#output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#search {
+    width: 100px;
+    padding: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+    visibility: hidden;
+
+}
+
+#city {
+    width: 300px;
+    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    
+
+}
+
+.out {
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+}
