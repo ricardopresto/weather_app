@@ -1,4 +1,7 @@
+import countryList from "./countryList.js";
+
 const city = document.getElementById("city");
+const country = document.getElementById("countrySelect");
 const search = document.getElementById("search");
 const loc = document.getElementById("loc");
 const description = document.getElementById("description");
@@ -8,8 +11,23 @@ const min_temp = document.getElementById("min_temp");
 let place;
 let weatherData = {};
 
+for (let country of countryList) {
+  let newItem = document.createElement("option");
+  newItem.innerHTML = country.Name;
+  countrySelect.appendChild(newItem);
+}
+
 document.addEventListener("keydown", keyPress);
 search.addEventListener("click", getWeather);
+countrySelect.addEventListener("change", selectCountry);
+
+function selectCountry() {
+  for (let n = 0; n < 248; n++) {
+    if (countryList[n].Name == countrySelect.value) {
+      console.log(countryList[n].Code);
+    }
+  }
+}
 
 city.focus();
 
@@ -31,8 +49,8 @@ const getWeatherData = place => {
       weatherData.minTemp = response.main.temp_min;
       updateDisplay();
     })
-    .catch(function() {
-      console.error("Data not found");
+    .catch(function(error) {
+      console.error(error);
       description.textContent = "Not found";
       loc.textContent = "";
       max_temp.textContent = "";
