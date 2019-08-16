@@ -62,7 +62,12 @@ const getWeatherData = place => {
     })
     .then(function(response) {
       console.log(response);
-      weatherData.location = response.name + ", " + response.sys.country;
+      for (let n = 0; n < 248; n++) {
+        if (countryList[n].Code == response.sys.country) {
+          var countryName = countryList[n].Name;
+        }
+      }
+      weatherData.location = response.name + ", " + countryName;
       weatherData.description = response.weather[0].description;
       weatherData.temp = response.main.temp;
     })
@@ -99,11 +104,9 @@ const getWeatherForecast = place => {
           middays.push(i);
         }
       }
-      console.log(middays);
       let timezone = response.city.timezone;
       let timeAdjust = Math.floor(timezone / 10800);
       let adjusted = middays.map(n => n - timeAdjust);
-      console.log(adjusted);
       forecastData.day1 = response.list[adjusted[0]].weather[0].description;
       forecastData.temp1 = response.list[adjusted[0]].main.temp;
       forecastData.day2 = response.list[adjusted[1]].weather[0].description;
@@ -111,8 +114,6 @@ const getWeatherForecast = place => {
       forecastData.day3 = response.list[adjusted[2]].weather[0].description;
       forecastData.temp3 = response.list[adjusted[2]].main.temp;
 
-      console.log(forecastData);
-      console.log(forecastData.day1);
       updateDisplay();
     })
     .catch(function(error) {
