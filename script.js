@@ -12,11 +12,22 @@ const day3Discription = document.getElementById("day3Description");
 const day1Temp = document.getElementById("day1Temp");
 const day2Temp = document.getElementById("day2Temp");
 const day3Temp = document.getElementById("day3Temp");
+const day2Name = document.getElementById("day2Name");
+const day3Name = document.getElementById("day3Name");
 
 let place;
 let countryCode = "";
 let weatherData = {};
 let forecastData = {};
+let days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
 
 for (let country of countryList) {
   let newItem = document.createElement("option");
@@ -27,11 +38,11 @@ for (let country of countryList) {
 document.addEventListener("keydown", keyPress);
 search.addEventListener("click", getWeather);
 countrySelect.addEventListener("change", selectCountry);
+city.addEventListener("change", capitalizeCity);
 
 function selectCountry() {
   for (let n = 0; n < 248; n++) {
     if (countryList[n].Name == countrySelect.value) {
-      console.log(countryList[n].Code);
       countryCode = countryList[n].Code;
     }
   }
@@ -122,18 +133,29 @@ function getWeather() {
 
 function updateDisplay() {
   loc.textContent = weatherData.location;
-  description.textContent = jsUcfirst(weatherData.description);
+  description.textContent = capitalize(weatherData.description);
   temp.textContent = weatherData.temp.toFixed(1) + "°C";
-  day1Discription.textContent = jsUcfirst(forecastData.day1);
+  day1Discription.textContent = capitalize(forecastData.day1);
   day1Temp.textContent = forecastData.temp1.toFixed(1) + "°C";
-  day2Discription.textContent = jsUcfirst(forecastData.day2);
+  day2Discription.textContent = capitalize(forecastData.day2);
   day2Temp.textContent = forecastData.temp2.toFixed(1) + "°C";
-  day3Discription.textContent = jsUcfirst(forecastData.day3);
+  day3Discription.textContent = capitalize(forecastData.day3);
   day3Temp.textContent = forecastData.temp3.toFixed(1) + "°C";
+  let today = new Date().getDay();
+  let day2day = today + 1;
+  let day3day = today + 2;
+  if (day2day > 6) day2day = day2day - 7;
+  if (day3day > 6) day3day = day3day - 7;
+  day2Name.textContent = days[day2day];
+  day3Name.textContent = days[day3day];
 }
 
-function jsUcfirst(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+function capitalize(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function capitalizeCity() {
+  city.value = capitalize(city.value);
 }
 
 function keyPress(event) {
