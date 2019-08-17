@@ -22,13 +22,14 @@ body {
   padding: 1rem;
   margin: 1rem;
   visibility: hidden;
-  box-shadow: 10 10 darkslategray;
 }
 
 #search {
   width: 6rem;
   padding: 6px;
   margin: 1rem;
+  background-color: transparent;
+  border: 1px solid darkslategray;
 }
 
 #cityInput {
@@ -41,7 +42,8 @@ body {
   width: 20rem;
   font-size: 1.2em;
   margin: 1rem;
-  background-color: white;
+  border: 1px solid darkslategray;
+  padding-left: 5px;
 }
 
 #countryInput {
@@ -53,6 +55,8 @@ body {
 #countrySelect {
   width: 20rem;
   margin: 1rem;
+  background-color: transparent;
+  border: 1px solid darkslategray;
 }
 
 label {
@@ -81,14 +85,12 @@ label {
 }
 
 .out {
-  padding: 10px;
+  padding: 5px;
   font-family: "Prompt", sans-serif;
   font-size: 1.5rem;
 }
 
 .temp {
-  padding: 10px;
-  font-family: "Prompt", sans-serif;
   font-size: 4rem;
 }
 
