@@ -165,7 +165,10 @@ function capitalize(s) {
 }
 
 function capitalizeCity() {
-  city.value = capitalize(city.value);
+  let words = city.value.split(" ");
+  let wordsUp = [];
+  words.forEach(n => wordsUp.push(capitalize(n)));
+  city.value = wordsUp.join(" ");
 }
 
 function keyPress(event) {
