@@ -144,13 +144,13 @@ function updateDisplay() {
 
   loc.textContent = weatherData.location;
   description.textContent = capitalize(weatherData.description);
-  temp.textContent = weatherData.temp.toFixed(1) + "°C";
+  temp.textContent = weatherData.temp.toFixed(1) + "°";
   day1Discription.textContent = capitalize(forecastData.day1);
-  day1Temp.textContent = forecastData.temp1.toFixed(1) + "°C";
+  day1Temp.textContent = forecastData.temp1.toFixed(1) + "°";
   day2Discription.textContent = capitalize(forecastData.day2);
-  day2Temp.textContent = forecastData.temp2.toFixed(1) + "°C";
+  day2Temp.textContent = forecastData.temp2.toFixed(1) + "°";
   day3Discription.textContent = capitalize(forecastData.day3);
-  day3Temp.textContent = forecastData.temp3.toFixed(1) + "°C";
+  day3Temp.textContent = forecastData.temp3.toFixed(1) + "°";
   let today = new Date().getDay();
   let day2day = today + 1;
   let day3day = today + 2;
