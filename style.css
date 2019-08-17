@@ -32,7 +32,7 @@ body {
   padding: 1rem;
   margin: 1rem;
   visibility: hidden;
-  box-shadow: 2px 2px 30px white;
+  box-shadow: 1px 1px 30px white;
 }
 
 #search {
@@ -41,6 +41,12 @@ body {
   margin: 1rem;
   background-color: transparent;
   border: 1px solid darkslategray;
+  -webkit-transition: 0.2s;
+  transition: box-shadow 0.2s;
+}
+
+#search:hover {
+  box-shadow: 1px 1px 30px white;
 }
 
 #cityInput {
@@ -93,7 +99,7 @@ label {
   border: 1px solid darkslategray;
   padding: 1rem;
   margin: 0 1rem 0 1rem;
-  box-shadow: 2px 2px 30px white;
+  box-shadow: 1px 1px 30px white;
 }
 
 .out {
