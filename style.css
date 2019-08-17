@@ -1,41 +1,117 @@
+* {
+  font-family: "Prompt", sans-serif;
+  white-space: nowrap;
+}
+
+body {
+  background-image: url("sky.jpg");
+  background-size: cover;
+}
+
 #input,
-#output {
+#output,
+#container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#search {
-  width: 100px;
-  padding: 6px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 4px;
+#output {
+  border: 1px solid darkslategray;
+  padding: 1rem;
+  margin: 1rem;
   visibility: hidden;
+  box-shadow: 10 10 darkslategray;
+}
+
+#search {
+  width: 6rem;
+  padding: 6px;
+  margin: 1rem;
+}
+
+#cityInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #city {
-  width: 300px;
-  margin: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14pt;
+  width: 20rem;
+  font-size: 1.2em;
+  margin: 1rem;
+  background-color: white;
+}
+
+#countryInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#countrySelect {
+  width: 20rem;
+  margin: 1rem;
+}
+
+label {
+  display: inline-block;
+  width: 10rem;
+  text-align: right;
+  white-space: nowrap;
 }
 
 #forecast {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 4rem;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
+  visibility: hidden;
 }
 
 .forecastDay {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid darkslategray;
+  padding: 1rem;
+  margin: 0 1rem 0 1rem;
 }
 
 .out {
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Prompt", sans-serif;
   font-size: 1.5rem;
+}
+
+.temp {
+  padding: 10px;
+  font-family: "Prompt", sans-serif;
+  font-size: 4rem;
+}
+
+@media screen and (max-width: 800px) {
+  #forecast {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forecastDay {
+    margin-top: 1rem;
+    width: min-content;
+  }
+
+  #cityInput {
+    flex-direction: column;
+  }
+
+  #countryInput {
+    flex-direction: column;
+  }
+
+  label {
+    width: min-content;
+  }
 }

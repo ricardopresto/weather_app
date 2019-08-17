@@ -10,34 +10,44 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Prompt&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="container">
       <div id="input">
-        <input type="text" id="city" name="city" />
-        <select id="countrySelect"> </select>
+        <div id="cityInput">
+          <label for="city">City or Town:</label>
+          <input type="text" id="city" name="city" />
+        </div>
+        <div id="countryInput">
+          <label for="country">Country (optional):</label>
+          <select id="countrySelect" name="country"></select>
+        </div>
         <button id="search">Search</button>
       </div>
       <div id="output">
         <div id="loc" class="out">Location</div>
+        <div id="temp" class="temp">Temp</div>
         <div id="description" class="out">Description</div>
-        <div id="temp" class="out">Temp</div>
       </div>
       <div id="forecast">
         <div id="day1" class="forecastDay">
           <div id="day1Name" class="out">Tomorrow</div>
+          <div id="day1Temp" class="temp">Temp1</div>
           <div id="day1Description" class="out">Day1</div>
-          <div id="day1Temp" class="out">Temp1</div>
         </div>
         <div id="day2" class="forecastDay">
           <div id="day2Name" class="out"></div>
+          <div id="day2Temp" class="temp">Temp2</div>
           <div id="day2Description" class="out">Day2</div>
-          <div id="day2Temp" class="out">Temp2</div>
         </div>
         <div id="day3" class="forecastDay">
           <div id="day3Name" class="out"></div>
+          <div id="day3Temp" class="temp">Temp3</div>
           <div id="day3Description" class="out">Day3</div>
-          <div id="day3Temp" class="out">Temp3</div>
         </div>
       </div>
     </div>

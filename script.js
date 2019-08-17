@@ -6,6 +6,8 @@ const search = document.getElementById("search");
 const loc = document.getElementById("loc");
 const description = document.getElementById("description");
 const temp = document.getElementById("temp");
+const output = document.getElementById("output");
+const forecast = document.getElementById("forecast");
 const day1Discription = document.getElementById("day1Description");
 const day2Discription = document.getElementById("day2Description");
 const day3Discription = document.getElementById("day3Description");
@@ -41,7 +43,7 @@ countrySelect.addEventListener("change", selectCountry);
 city.addEventListener("change", capitalizeCity);
 
 function selectCountry() {
-  for (let n = 0; n < 248; n++) {
+  for (let n = 0; n < countryList.length; n++) {
     if (countryList[n].Name == countrySelect.value) {
       countryCode = countryList[n].Code;
     }
@@ -62,7 +64,7 @@ const getWeatherData = place => {
     })
     .then(function(response) {
       console.log(response);
-      for (let n = 0; n < 248; n++) {
+      for (let n = 0; n < countryList.length; n++) {
         if (countryList[n].Code == response.sys.country) {
           var countryName = countryList[n].Name;
         }
@@ -73,9 +75,11 @@ const getWeatherData = place => {
     })
     .catch(function(error) {
       console.error(error);
-      description.textContent = "Not found";
+      temp.textContent = "Not found";
       loc.textContent = "";
-      temp.textContent = "";
+      description.textContent = "";
+      output.style.visibility = "visible";
+      forecast.style.visibility = "hidden";
     });
 };
 
@@ -118,9 +122,11 @@ const getWeatherForecast = place => {
     })
     .catch(function(error) {
       console.error(error);
-      description.textContent = "Not found";
+      temp.textContent = "Not found";
       loc.textContent = "";
-      temp.textContent = "";
+      description.textContent = "";
+      output.style.visibility = "visible";
+      forecast.style.visibility = "hidden";
     });
 };
 
@@ -133,6 +139,9 @@ function getWeather() {
 }
 
 function updateDisplay() {
+  output.style.visibility = "visible";
+  forecast.style.visibility = "visible";
+
   loc.textContent = weatherData.location;
   description.textContent = capitalize(weatherData.description);
   temp.textContent = weatherData.temp.toFixed(1) + "°C";
